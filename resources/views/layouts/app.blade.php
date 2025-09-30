@@ -9,8 +9,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Css -->
-    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{[ asset('bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
+     <link href="{{ asset('bootstrap/font/bootstrap-icons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -34,7 +34,7 @@
             {{ $slot }}
         </main>
     </div>
-    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script>
         let myModalEl = document.querySelector('[data-modal="1"]');
         if (myModalEl) {

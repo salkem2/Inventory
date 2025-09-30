@@ -9,7 +9,7 @@ class Lokasi extends Model
 {
     protected $fillable = ['nama_lokasi'];
     
-    public function barangs(): HasMany
+    public function barang  (): HasMany
     {
         return $this->hasMany(Barang::class, 'lokasi_id');
     }

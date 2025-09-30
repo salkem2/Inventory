@@ -30,6 +30,15 @@ return [
 
     'disks' => [
 
+        'gambar-barang' => [
+            'driver' => 'local',
+            'root' => public_path('gambar-barang'),
+            'url' => env('APP_URL').'/gambar-barang',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
