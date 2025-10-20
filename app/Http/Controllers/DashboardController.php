@@ -25,6 +25,16 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Data chart history peminjaman 30 hari terakhir
+        $startDate = now()->subDays(29)->startOfDay();
+        $labels = [];
+        $data = [];
+        for ($i = 0; $i < 30; $i++) {
+            $date = $startDate->copy()->addDays($i);
+            $labels[] = $date->format('d/m');
+            $data[] = \App\Models\Peminjaman::whereDate('tanggal_pinjam', $date->format('Y-m-d'))->count();
+        }
+
         return view('dashboard', compact(
             'jumlahBarang',
             'jumlahKategori',
@@ -33,7 +43,9 @@ class DashboardController extends Controller
             'kondisiBaik',
             'kondisiRusakRingan',
             'kondisiRusakBerat',
-            'barangTerbaru'
+            'barangTerbaru',
+            'labels',
+            'data'
         ));
     }
 }

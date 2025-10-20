@@ -11,27 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('barangs', function (Blueprint $table) {
+        Schema::create('detail_barangs', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_barang',  50)->unique();
-            $table->string('nama_barang',  150);
-
-            $table->foreignId('kategori_id')
-                ->constrained('kategoris')
+            $table->foreignId('barang_id')
+                ->constrained('barangs')
                 ->onUpdate('cascade')
-                ->onDelete('restrict');
-
+                ->onDelete('cascade');
+            
             $table->foreignId('lokasi_id')
                 ->constrained('lokasis')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
-
-            $table->Integer('jumlah')->default(0);
-            $table->boolean('is_per_unit')->default(false)->comment('true = per unit, false = tidak per unit');
-            $table->string('satuan', 20);
+            
+            $table->string('sub_kode', 50)->unique(); // Contoh: LPT-001, LPT-002
             $table->enum('kondisi', ['Baik', 'Rusak ringan', 'Rusak berat'])->default('Baik');
-            $table->date('tanggal_pengadaan');
-            $table->string('gambar')->nullable();
+            $table->enum('status', ['Tersedia', 'Dipinjam', 'Rusak'])->default('Tersedia');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }
@@ -41,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('barangs');
+        Schema::dropIfExists('detail_barangs');
     }
 };

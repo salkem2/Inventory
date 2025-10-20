@@ -14,15 +14,16 @@
         <!-- Menu -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side -->
-           <ul class="navbar-nav me-auto">
-                @php
-                    $navs = [
-                        ['route' => 'dashboard', 'name' => 'Dashboard'],
-                        ['route' => 'barang.index', 'name' => 'Barang'],
-                        ['route' => 'lokasi.index', 'name' => 'Lokasi'],
-                        ['route' => 'kategori.index', 'name' => 'Kategori'],
-                        ['route' => 'user.index', 'name' => 'User', 'role' => 'admin'],
-                    ];
+            <ul class="navbar-nav me-auto">
+                @php 
+                $navs = [
+                    ['route' => 'dashboard', 'name' => 'Dashboard'],
+                    ['route' => 'barang.index', 'name' => 'Barang'],
+                    ['route' => 'peminjaman.index', 'name' => 'Peminjaman'],
+                    ['route' => 'lokasi.index', 'name' => 'Lokasi'],
+                    ['route' => 'kategori.index', 'name' => 'Kategori'],
+                    ['route' => 'user.index', 'name' => 'User', 'role' => 'admin'],
+                ];
                 @endphp
 
                 @foreach ($navs as $nav)
@@ -34,16 +35,16 @@
                         @role($role)
                             <li class="nav-item">
                                 <x-nav-link :active="request()->routeIs($route)" :href="route($route)">
-                                    {{ $name }}
+                                    {{ ($name) }}
                                 </x-nav-link>
                             </li>
                         @endrole
-                    @else
-                        <li class="nav-item">
-                            <x-nav-link :active="request()->routeIs($route)" :href="route($route)">
-                                {{ $name }}
-                            </x-nav-link>
-                        </li>
+                    @else 
+                    <li class="nav-item">
+                        <x-nav-link :active="request()->routeIs($route)" :href="route($route)">
+                            {{ ($name) }}
+                        </x-nav-link>
+                    </li>
                     @endif
                 @endforeach
             </ul>

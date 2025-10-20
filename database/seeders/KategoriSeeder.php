@@ -14,8 +14,7 @@ class KategoriSeeder extends Seeder
     public function run(): void
     {
         DB::table('kategoris')->insert([
-            [
-                'nama_kategori' => 'Elektronik', 'created_at' => now(),'updated_at' => now() ],
+            ['nama_kategori' => 'Elektronik', 'created_at' => now(), 'updated_at' => now()],
             [
                 'nama_kategori' => 'Mebel & Furnitur',
                 'created_at' => now(),
@@ -26,7 +25,7 @@ class KategoriSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
-            ['nama_kategori' => 'Aset Gedung','created_at' => now(), 'updated_at' => now()],
+            ['nama_kategori' => 'Aset Gedung', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

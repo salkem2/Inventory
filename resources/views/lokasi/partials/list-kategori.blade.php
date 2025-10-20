@@ -2,6 +2,7 @@
     <x-slot name="header">
         <th>#</th>
         <th>Nama lokasi</th>
+        <th>Jumlah Barang</th>
         @can('manage lokasi')
             <th>&nbsp;</th>
         @endcan
@@ -11,6 +12,14 @@
         <tr>
             <td>{{ $lokasis->firstItem() + $index }}</td>
             <td>{{ $lokasi->nama_lokasi }}</td>
+            <td>
+             
+                <span class="badge rounded-pill bg-info text-dark px-3 py-2 fs-6" style="font-size:1rem;">
+                    <i class="bi bi-box-seam me-1"></i>{{ $lokasi->barang->count() }}
+                </span>
+                <span class="text-muted" style="font-size:0.95em;"></span>
+              
+            </td>
 
             @can('manage lokasi')
                 <td>
